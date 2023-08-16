@@ -1,0 +1,25 @@
+﻿<Window x:Class="Kursach_Ivan.MatriculantAddForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kursach_Ivan"
+        mc:Ignorable="d"
+        Title="MatriculantAddForm" Height="300" Width="400">
+    <Grid>
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <StackPanel Orientation="Vertical" Margin="10">
+                <Label Content="Введите имя:" Height="30" VerticalAlignment="Center" Margin="10"/>
+                <Label Content="Введите № Школы" Height="30" VerticalAlignment="Center" Margin="10"/>
+                <Label Content="Выберите экзамен" Height="30" VerticalAlignment="Center" Margin="10"/>
+                <Button Content="Добавить" Height="30" VerticalAlignment="Center" Margin="10" Click="ButtonAdd_Click" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10">
+                <TextBox x:Name="nameTextBox" Text="" Height="30" Width="100" VerticalAlignment="Center" Margin="10" />
+                <TextBox x:Name="schoolTextBox" Text="" Height="30" Width="100" VerticalAlignment="Center" Margin="10" />
+                <ComboBox x:Name="examComboBox" Height="30" Width="100" VerticalAlignment="Center" Margin="10"/>
+                <Button Content="Отмена" Height="30" VerticalAlignment="Center" Margin="10" Click="ButtonCancel_Click" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

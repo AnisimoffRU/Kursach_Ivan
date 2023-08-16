@@ -1,0 +1,75 @@
+﻿<Window x:Class="Kursach_Ivan.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kursach_Ivan"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid ShowGridLines="false">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Menu Height="25" VerticalAlignment="Top" Grid.Row="0" Grid.ColumnSpan="3">
+            <MenuItem Header="Меню">
+                <MenuItem Header="Таблицы">
+                    <MenuItem Header="Абитуриенты"/>
+                    <MenuItem Header="Экзамены"/>
+                    <MenuItem Header="Экзаменатор"/>
+                </MenuItem>
+                <MenuItem Header="Добавить">
+                    <MenuItem Header="Абитуриента" Click="MatriculantAdd_Click" />
+                    <MenuItem Header="Экзамен" Click="ExamAdd_Click" />
+                    <MenuItem Header="Экзаменатора" Click="ExaminatorAdd_Click" />
+                </MenuItem>
+                <MenuItem Header="Поиск" Click="FindFormClick"/>
+            </MenuItem>
+        </Menu>
+        <TabControl Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="2">
+            <TabItem Header="Абитуриенты">
+                <DataGrid AutoGenerateColumns="False" x:Name="dgMatriculant" x:FieldModifier="public" CanUserAddRows="False" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Id}" Header="ID"/>
+                        <DataGridTextColumn Binding="{Binding FullName}" Header="Имя" Width="100"/>
+                        <DataGridTextColumn Binding="{Binding SchoolNumber}" Header="№ Школы" Width="100"/>
+                        <DataGridTextColumn Binding="{Binding ExamId}" Header="Экзамен"/>
+                    </DataGrid.Columns>
+                    <DataGrid.ItemContainerStyle>
+                        <Style TargetType="DataGridRow">
+                            <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
+                        </Style>
+                    </DataGrid.ItemContainerStyle>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Экзамены">
+                <DataGrid AutoGenerateColumns="False" x:Name="dgExam" CanUserAddRows="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="auto"/>
+                        <DataGridTextColumn Binding="{Binding Grade}" Header="Оценка" Width="100"/>
+                        <DataGridTextColumn Binding="{Binding ExaminatorId}" Header="Экзаменатор"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Экзаменаторы">
+                <DataGrid AutoGenerateColumns="False" x:Name="dgExaminator" CanUserAddRows="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="auto"/>
+                        <DataGridTextColumn Binding="{Binding FullName}" Header="Имя" Width="100"/>
+                        <DataGridTextColumn Binding="{Binding Position}" Header="Должность" Width="100"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="4">
+            <Button x:Name="buttonDelete" Content="Удалить" Height="30" Margin="10" Click="ButtonDelete_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
